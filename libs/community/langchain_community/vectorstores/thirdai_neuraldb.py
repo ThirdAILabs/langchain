@@ -12,22 +12,7 @@ from langchain_core.vectorstores import VectorStore
 
 
 class NeuralDBVectorStore(VectorStore):
-    """Vectorstore that uses ThirdAI's NeuralDB.
-
-    To use, you should have the ``thirdai[neural_db]`` python package installed.
-
-    Example:
-        .. code-block:: python
-
-            from langchain_community.vectorstores import NeuralDBVectorStore
-            from thirdai import neural_db as ndb
-
-            db = ndb.NeuralDB()
-            vectorstore = NeuralDBVectorStore(db=db)
-    """
-    def __init__(self, db):
-        self.db = db
-
+    """Vectorstore that uses ThirdAI's NeuralDB."""
 
     db: Any = None  #: :meta private:
     """NeuralDB instance"""
@@ -337,6 +322,7 @@ class NeuralDBVectorStore(VectorStore):
                     metadata={
                         "id": ref.id,
                         "upvote_ids": ref.upvote_ids,
+                        "text": ref.text,
                         "source": ref.source,
                         "metadata": ref.metadata,
                         "score": ref.score,
